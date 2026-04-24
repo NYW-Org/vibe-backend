@@ -12,4 +12,4 @@ COPY --from=build /app/build/libs/app.jar app.jar
 
 # Low Memory config
 # Update your Dockerfile ENTRYPOINT
-ENTRYPOINT ["java", "-Djava.net.preferIPv4Stack=false", "-Djava.net.preferIPv6Addresses=true", "-XX:+UseSerialGC", "-Xms128m", "-Xmx256m", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-Djava.net.preferIPv4Stack=true", "-Djava.net.preferIPv6Addresses=false", "-XX:+UseSerialGC", "-Xms128m", "-Xmx256m", "-jar", "app.jar"]
