@@ -1,16 +1,15 @@
-package org.dating.model.request;
+package org.dating.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class OtpRequest {
-    @NonNull
-    private String phoneNumber;
+public class LoginResponse {
+    private String token;
+    private String message;
 }

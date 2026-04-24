@@ -1,10 +1,10 @@
 package org.dating.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.dating.model.request.ValidateOtpRequest;
-import org.dating.model.response.LoginResponse;
-import org.dating.model.request.OtpRequest;
-import org.dating.model.response.OtpDataResponse;
+import org.dating.dto.request.ValidateOtpRequest;
+import org.dating.dto.response.LoginResponse;
+import org.dating.dto.request.OtpRequest;
+import org.dating.dto.response.OtpDataResponse;
 import org.dating.service.AuthService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
