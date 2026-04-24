@@ -1,4 +1,4 @@
-package org.dating.model.response;
+package org.dating.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginResponse {
-    private String token;
+public class ProfileResponse {
+    private String userId;
     private String message;
+    private String type;
 }

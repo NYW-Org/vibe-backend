@@ -1,11 +1,11 @@
 package org.dating.service;
 
 import lombok.RequiredArgsConstructor;
-import org.dating.model.request.ValidateOtpRequest;
-import org.dating.model.response.MessageSendResponse;
-import org.dating.model.response.MessageTokenResponse;
-import org.dating.model.response.MessageValidateResponse;
-import org.dating.model.response.OtpDataResponse;
+import org.dating.dto.request.ValidateOtpRequest;
+import org.dating.dto.response.MessageSendResponse;
+import org.dating.dto.response.MessageTokenResponse;
+import org.dating.dto.response.MessageValidateResponse;
+import org.dating.dto.response.OtpDataResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

@@ -1,4 +1,4 @@
-package org.dating.model.response;
+package org.dating.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
