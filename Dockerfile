@@ -1,12 +1,12 @@
 # Build
-FROM eclipse-temurin:21-jdk-alpine AS build
+FROM eclipse-temurin:21-jdk AS build
 WORKDIR /app
 COPY . .
 RUN chmod +x ./gradlew
 RUN ./gradlew bootJar -x test
 
 # Create image
-FROM eclipse-temurin:21-jdk-alpine
+FROM eclipse-temurin:21-jdk
 WORKDIR /app
 COPY --from=build /app/build/libs/app.jar app.jar
 
