@@ -34,4 +34,8 @@ public class AuthService {
   public OtpDataResponse sendOtp(OtpRequest otpRequest) {
     return messageCentralService.sendOtp(otpRequest.getPhoneNumber());
   }
+
+  public String generateToken(String phoneNumber) {
+    return jwtService.generateToken(phoneNumber, "User");
+  }
 }

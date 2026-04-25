@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
@@ -38,5 +40,11 @@ public class AuthController {
       return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(otpDataResponse);
     }
     return ResponseEntity.ok(otpDataResponse);
+  }
+
+  @PostMapping("/generate-token")
+  public ResponseEntity<String> generateToken(@RequestBody String phoneNumber) {
+    String token = authService.generateToken(phoneNumber);
+    return ResponseEntity.ok(token);
   }
 }
