@@ -1,7 +1,6 @@
 package org.dating.service;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -30,5 +29,31 @@ public class JwtService {
           .setExpiration(new Date(System.currentTimeMillis() + Integer.parseInt(jwtExpiration)))
           .signWith(getKey(), SignatureAlgorithm.HS256)
           .compact();
+    }
+
+    public Claims validateToken(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(getKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+    }
+
+    public boolean isValid(String token) {
+        try {
+            validateToken(token);
+            return true;
+        } catch (ExpiredJwtException e) {
+            System.out.println("Token expired");
+        } catch (UnsupportedJwtException e) {
+            System.out.println("Unsupported token");
+        } catch (MalformedJwtException e) {
+            System.out.println("Invalid token");
+        } catch (SignatureException e) {
+            System.out.println("Invalid signature");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Empty token");
+        }
+        return false;
     }
 }
