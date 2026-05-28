@@ -2,6 +2,7 @@ package org.vibe.adapter;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.WebSocketSession;
 import org.vibe.dto.AIChatContext;
@@ -14,7 +15,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+@RequiredArgsConstructor
 public class ManualAIChatContextAdapter implements AIChatContextAdapterStrategy {
+  private final ObjectMapper objectMapper;
+
   @Override
   public Optional<AIChatContext> adapt(WebSocketSession webSocketSession) {
     AIChatMessageDto aiChatMessageDto =
@@ -36,7 +40,7 @@ public class ManualAIChatContextAdapter implements AIChatContextAdapterStrategy 
 
   public Optional<AIChatContext> adaptTextMessage(String message) {
     try {
-      return Optional.of(new ObjectMapper().readValue(message, AIChatContext.class));
+      return Optional.of(objectMapper.readValue(message, AIChatContext.class));
     } catch (JsonProcessingException e) {
       return Optional.empty();
     }
