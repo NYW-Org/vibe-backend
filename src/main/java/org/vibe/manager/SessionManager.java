@@ -33,6 +33,6 @@ public class SessionManager {
     public void close(WebSocketSession webSocketSession) {
         try {
             webSocketSession.close();
-        } catch (IOException exception) {}
+        } catch (IOException ignored) {}
     }
 }
