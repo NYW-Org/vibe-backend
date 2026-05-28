@@ -1,2 +1,2 @@
-# dating-backend
-Dating Backend in JAVA 21 
+# vibe-backend
+Vibe Backend in JAVA 21 

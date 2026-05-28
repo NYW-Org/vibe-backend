@@ -31,6 +31,6 @@ jobs:
       - name: Install Railway CLI
         run: npm i -g @railway/cli
       - name: Deploy
-        run: railway up --detach --service dating-backend
+        run: railway up --detach --service vibe-backend
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
