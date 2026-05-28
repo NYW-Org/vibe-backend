@@ -23,6 +23,10 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
     @Override
     public void afterConnectionEstablished(@NonNull WebSocketSession webSocketSession) {
         sessionManager.add(webSocketSession);
+        AIChatContext aiChatContext = aiChatContextFactory.getAIChatContext(webSocketSession);
+        aiStreamingService.stream(aiChatContext, chunk -> {
+            sessionManager.send(webSocketSession, chunk);
+        });
     }
 
     @Override
@@ -32,10 +36,8 @@ public class ChatWebSocketHandler extends TextWebSocketHandler {
 
     @Override
     public void handleTextMessage(@NonNull WebSocketSession webSocketSession, @NonNull TextMessage message) {
-        AIChatContext aiChatContext = aiChatContextFactory.getAIChatContext(webSocketSession, message.getPayload());
-        if (!aiChatContext.getCurrentGoal().equals(AIGoal.LANG_PREF)) {
+        AIChatContext aiChatContext = aiChatContextFactory.convetToChatContext(message);
 
-        }
         aiStreamingService.stream(aiChatContext, chunk -> {
             sessionManager.send(webSocketSession, chunk);
         });

@@ -9,7 +9,7 @@ import java.util.Optional;
 @Component
 public class RedisAIChatContextAdapter implements AIChatContextAdapterStrategy {
     @Override
-    public Optional<AIChatContext> adapt(WebSocketSession webSocketSession, String message) {
+    public Optional<AIChatContext> adapt(WebSocketSession webSocketSession) {
         return Optional.empty();
     }
 }
