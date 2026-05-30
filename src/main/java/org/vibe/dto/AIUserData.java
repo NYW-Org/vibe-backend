@@ -19,4 +19,6 @@ public class AIUserData {
 
     @JsonProperty("lang_pref")
     private String langPref;
+
+
 }
