@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.vibe.enums.AIGoal;
 
 import java.util.List;
+import java.util.Map;
 
 @Data
 @Builder
@@ -21,7 +22,7 @@ public class AIChatContext {
     private AIGoal currentGoal;
 
     @JsonProperty("request_data")
-    private AIUserData requestData;
+    private Map<AIGoal, Object> requestData;
 
     @JsonProperty("conversation_history")
     private List<AIChatMessageDto> conversationHistory;
